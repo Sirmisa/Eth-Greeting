@@ -6,6 +6,38 @@ contract Greeter {
     //in the in the contracts persisted storage as a STATE VARIABLE
     //These variables are available to all functions in the contract
     string private _greeting = "Hello, World!";
+    //This will hold the owner's address
+    address private _owner;
+
+    /**
+     * This constructor will set at the contract initialization
+     * the address that created the contract. In this case
+     * it will be de deployer to the blockchain and will be handled as the 
+     * owner
+     */
+    constructor() public {
+        _owner = msg.sender;
+    }
+
+    /**
+     * This is a modifier, it is added to the functions to perform an action
+     * either before the function execution or at the end of the execution
+     */
+    modifier onlyOwner() {
+        //The require function is like an IF sentence
+        //in this case it is checking if the current address taking action in the contract
+        //aka msg.sender is the same address as the _owner that was defined
+        //at the contract deployment to the blockchain.
+        //WHEN the "require" condition is not met the program stops the execution
+        //and reverts completely the transaction
+        require(
+            msg.sender == _owner,
+            "Ownable: caller is not the owner"
+        );
+        //This line below is where the function that is being modified will be called.
+        //If you put anything after this line, it will be run after the function body completes.
+        _;
+    }
 
     /**
      * function = the way a method is called
@@ -27,9 +59,20 @@ contract Greeter {
     /**
      * This function with the external keyword and that means this will be called externally
      * calldata = this is because the data passed to the function is not part of the contract's
-     * persisted storage
+     * persisted storage.
+     ****Update - by adding "onlyOwner" modifier we are checking first what is defined in that
+     ****modifier before 
      */
-    function setGreeting(string calldata greeting) external {
+    function setGreeting(string calldata greeting) external onlyOwner {
         _greeting = greeting;
+    }
+
+    /**
+     * This function will return the owner's address
+     * the returned address is just address
+     * the other one is address payable but we are not using it
+     */
+    function owner() public view returns(address){
+        return _owner;
     }
 }
