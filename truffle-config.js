@@ -25,6 +25,9 @@
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
+  //**Update - this is to re-define the place where the compiled contracts are going to be stored..
+  //..this time we need them in the react/ui/client part to interact with them.
+  contracts_build_directory: "./client/src/contracts",
   /**
    * Networks define how you connect to your ethereum client and let you set the
    * defaults web3 uses to send transactions. If you don't specify one truffle
