@@ -9,8 +9,9 @@ Openzepellin | TBD
 Purity | TBD
 Hyperledger Besu | TBD
 Ganache | TBD
-TBD | TBD
-
+Metamask | TBD
+Goerli testnet | This testnet is compatible with Parity and Geth
+Truffle HD wallet | This will work as a provider with Web3
 
 ## This is a glosary
 
@@ -18,17 +19,8 @@ Concept | Definition/Meaning/Explanation
 ------------ | -------------
 ABI (Application Binary Interface) | Describes the functions and events of our contract. The ABI will be the basis for the client-side abstraction used to interact with our contract. They are created after the compilation process and is part of a .json file in the **build/contracts** folder
 Bytecode | The bytecode field contains the result of compiling your contract. This is the code the Ethereum network will execute when our contract has been invoked from a client. They are created after the compilation process and is part of a .json file in the **build/contracts** folder
-concept | definition
-concept | definition
-concept | definition
-concept | definition
-concept | definition
-concept | definition
-concept | definition
-concept | definition
-concept | definition
-concept | definition
-concept | definition
+Testnets | Testnets are nets where we can try our Eth developments. There are many nets and clients to interact. Hyperledger has Besu
+Web3 Provider | A provider is a component of Web3 that manages how to connect to the Ethereum network.
 concept | definition
 
 ## Here is the place for some definitions
@@ -42,6 +34,7 @@ concept | definition
 
 
 ## Here is the place for the command line instructions
+### The UI environment
 - Compile and install the react/app
 ```
 $ cd greeter/client
@@ -55,6 +48,16 @@ $ npm run start
 ```
 $ truffle migrate --network development
 ```
+### Truffle HD wallet provider for Web3
+- Install the **HDWalletProvider**
+```
+$ npm install truffle-hdwallet-provider --save-dev
+```
+- Set the **mnemonic** environment variable (we do this to not expose that information in the code)
+```
+$ export MNEMONIC="_YOUR MNEMONIC PHRASE GOES HERE_"
+```
+
 
 ## Here some additional configurations to 3rd party software
 
@@ -63,3 +66,7 @@ $ truffle migrate --network development
     - **Network name**: Ganache
     - **RCP URL**: http://127.0.0.1:7545
     - **Chain ID**: 1337
+- **Goerli testnet development**
+    - Visit https://goerli-faucet.slock.it/
+    - Copy the metamask account, paste it in the input box and click in the request button
+    - Swith to the Goerli testnet in metamask

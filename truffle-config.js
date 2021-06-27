@@ -18,7 +18,8 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+//Update - We need this line to let Truffle connect with the HDWalletProvider for Web3
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
@@ -51,6 +52,15 @@ module.exports = {
      port: 7545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
     },
+    //Update - This setting is to be able to connect to the Goerli testnet, we are passing
+    // the mnemonic passphrase from the current environment.
+    goerli: {
+      provider: () => {
+        const mnemonic = process.env["MNEMONIC"]
+        return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545");
+      },
+      network_id: "*",
+    }
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
