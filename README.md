@@ -39,3 +39,27 @@ concept | definition
 - The deployment transaction includes the **bytecode** from the compilation and it will be sent as the **transaction data**
 - The contract has to be mined before we will be able to interact with it.
 - When the contract is mined it will execute the code in its constructor and will set the initial state for the contract
+
+
+## Here is the place for the command line instructions
+- Compile and install the react/app
+```
+$ cd greeter/client
+$ npm install
+```
+- Run the react app
+```
+$ npm run start
+```
+- Migrating the contracts to Ganache in local/dev environment
+```
+$ truffle migrate --network development
+```
+
+## Here some additional configurations to 3rd party software
+
+### Metamask
+- **Local development** - configuration to run with **Ganache**
+    - **Network name**: Ganache
+    - **RCP URL**: http://127.0.0.1:7545
+    - **Chain ID**: 1337
