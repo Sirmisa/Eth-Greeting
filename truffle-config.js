@@ -17,9 +17,9 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
-
+ const HDWalletProvider = require("truffle-hdwallet-provider");
 //Update - We need this line to let Truffle connect with the HDWalletProvider for Web3
-const HDWalletProvider = require('@truffle/hdwallet-provider');
+// const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
@@ -53,13 +53,25 @@ module.exports = {
      network_id: "*",       // Any network (default: none)
     },
     //Update - This setting is to be able to connect to the Goerli testnet, we are passing
-    // the mnemonic passphrase from the current environment.
+    // the mnemonic passphrase from the current environment. In this case we are running a local eth client like Parity/OpenEthereum
     goerli: {
       provider: () => {
-        const mnemonic = process.env["MNEMONIC"]
-        return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545");
+        const mnemonic = process.env["MNEMONIC"] // this is the mnemonic passphrase from the metamask wallet
+        return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545"); // This is the route from the local eth client that will be listening in this port
       },
       network_id: "*",
+    },
+    //Update - This setting is to let Infura to manage our contract in the designed Ethereum network
+    rinkeby: {
+      provider: () => {
+        const mnemonic = process.env["MNEMONIC"] // this is the mnemonic passphrase from the metamask wallet
+        const project_id = process.env["INFURA_PROJECT_ID"] //This can be found in infura website
+        return new HDWalletProvider(
+          mnemonic,
+          `https://rinkeby.infura.io/v3/${project_id}`
+        );
+      },
+      network_id: "*"
     }
     // Another network with more advanced options...
     // advanced: {

@@ -12,6 +12,7 @@ Ganache | TBD
 Metamask | TBD
 Goerli testnet | This testnet is compatible with Parity and Geth
 Truffle HD wallet | This will work as a provider with Web3
+Infura | is a service provider for managed Ethereum nodes.
 
 ## This is a glosary
 
@@ -57,11 +58,24 @@ $ npm install truffle-hdwallet-provider --save-dev
 ```
 $ export MNEMONIC="_YOUR MNEMONIC PHRASE GOES HERE_"
 ```
-
+### Infura - configuration to migrate and run the contracts
+- Set the project ID in the SO environment
+```
+$ export INFURA_PROJECT_ID=<PROJECT_ID>
+```
+- Migrate the the contract to the selected network
+```
+$ truffle migrate --network rinkeby
+```
+- Run the UI client
+```
+$ cd client
+$ npm run start
+```
 
 ## Here some additional configurations to 3rd party software
 
-### Metamask
+### Metamask and Truffle network configurations
 - **Local development** - configuration to run with **Ganache**
     - **Network name**: Ganache
     - **RCP URL**: http://127.0.0.1:7545
@@ -70,3 +84,10 @@ $ export MNEMONIC="_YOUR MNEMONIC PHRASE GOES HERE_"
     - Visit https://goerli-faucet.slock.it/
     - Copy the metamask account, paste it in the input box and click in the request button
     - Swith to the Goerli testnet in metamask
+- **Rinkeby testnet development and Infura**
+    - Create a new project
+    - Select a network in this case Rinkeby
+    - Visit https://faucet.rinkeby.io/ to get eth from the faucet
+    - 
+
+### Infura
