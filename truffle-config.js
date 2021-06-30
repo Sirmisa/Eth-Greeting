@@ -17,7 +17,9 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
- const HDWalletProvider = require("truffle-hdwallet-provider");
+//Update - the following truffle hdwallet line was not working due to the new package version
+//  const HDWalletProvider = require("truffle-hdwallet-provider"); <--- this was not working with Truffleteams
+const HDWalletProvider = require("@truffle/hdwallet-provider"); // <--- This is the new line that works now that I updated the node_modules with the correct package
 //Update - We need this line to let Truffle connect with the HDWalletProvider for Web3
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
