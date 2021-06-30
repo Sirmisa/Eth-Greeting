@@ -1,0 +1,9 @@
+{
+    "name": "Greeter",
+    "version": "1.0.0",
+    "devDependencies": {},
+    "dependencies": {
+        "@truffle/hdwallet-provider": "^1.4.1",
+        "openzeppelin-solidity": "^4.1.0"
+    }
+}

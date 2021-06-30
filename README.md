@@ -35,6 +35,19 @@ concept | definition
 
 
 ## Here is the place for the command line instructions
+### The basic environment for the contracts
+- Install Truffle
+```
+$ npm install -g truffle
+```
+- Install Truffle HDWallet Provider
+```
+$ npm install @truffle/hdwallet-provider
+```
+- Install OpenZepellin
+```
+$ npm install openzeppelin-solidity
+```
 ### The UI environment
 - Compile and install the react/app
 ```
